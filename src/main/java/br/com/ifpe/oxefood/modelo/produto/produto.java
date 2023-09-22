@@ -1,10 +1,5 @@
 package br.com.ifpe.oxefood.modelo.produto;
 
-public class produto {
-    
-
-
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -19,7 +14,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "Produto")
+@Table(name ="Produto")
 @Where(clause = "habilitado = true")
 @Builder
 @Getter
@@ -28,7 +23,8 @@ import lombok.Setter;
 @NoArgsConstructor
 public class Produto extends EntidadeAuditavel  {
 
-   @Column
+   
+    @Column
    private String codigo;
 
    @Column
@@ -38,14 +34,12 @@ public class Produto extends EntidadeAuditavel  {
    private String descricao;
 
    @Column
-   private Double ValorUnitario;
-
+   private Double valorUnitario;
+   
    @Column
-   private Interger TempoEntregaMinimo;
+   private Integer tempoEntregaMinimo;
 
     @Column
-   private Interger TempoEntregaMaximo;
-
-}
+   private Integer tempoEntregaMaximo;
 
 }

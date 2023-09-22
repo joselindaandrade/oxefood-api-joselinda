@@ -1,9 +1,4 @@
-package br.com.ifpe.oxefood.api.Produto;
-
-public class ProdutoController {
-    
-
-
+package br.com.ifpe.oxefood.api.produto;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.ifpe.oxefood.modelo.produto.Produto;
 import br.com.ifpe.oxefood.modelo.produto.ProdutoService;
-}
+
 @RestController
 @RequestMapping("/api/produto")
 @CrossOrigin
@@ -29,7 +24,7 @@ public class ProdutoController{
    public ResponseEntity<Produto> save(@RequestBody ProdutoRequest request) {
 
        Produto produto = ProdutoService.save(request.build());
-       return new ResponseEntity<Produto>(Produto, HttpStatus.CREATED);
+       return new ResponseEntity<Produto>(produto, HttpStatus.CREATED);
    }
 }
 
