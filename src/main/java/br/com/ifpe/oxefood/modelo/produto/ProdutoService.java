@@ -7,22 +7,31 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import br.com.ifpe.oxefood.modelo.cliente.Cliente;
+
 @Service
 public class ProdutoService {
 
+    @Transactional
+    public void delete(Long id) {
 
-   @Autowired
-   private ProdutoRepository repository;
+        Cliente cliente = repository.IdindById(id).get();
+        cliente.setHabilitado(Boolean.FALSE);
+        cliente.setVersao(cliente.getVersao() + 1);
 
-   @Transactional
-   public Produto save(Produto produto) {
+        repository.save(cliente);
+    }
 
-       produto.setHabilitado(Boolean.TRUE);
-       produto.setVersao(1L);
-       produto.setDataCriacao(LocalDate.now());
-       return repository.save(produto);
-   }
+    @Autowired
+    private ProdutoRepository repository;
+
+    @Transactional
+    public Produto save(Produto produto) {
+
+        produto.setHabilitado(Boolean.TRUE);
+        produto.setVersao(1L);
+        produto.setDataCriacao(LocalDate.now());
+        return repository.save(produto);
+    }
 
 }
-
-    

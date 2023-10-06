@@ -10,6 +10,18 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class ClienteService {
+
+    @Transactional
+    public void delete(Long id) {
+ 
+        Cliente cliente = repository.findById(id).get();
+        cliente.setHabilitado(Boolean.FALSE);
+        cliente.setVersao(cliente.getVersao() + 1);
+ 
+        repository.save(cliente);
+    }
+ 
+
     @Autowired
     private ClienteRepository repository;
 

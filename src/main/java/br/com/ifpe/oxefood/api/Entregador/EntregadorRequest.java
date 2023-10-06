@@ -1,11 +1,5 @@
 package br.com.ifpe.oxefood.api.entregador;
 
-public class EntregadorRequest {
-
-    public Entregador build() {
-        return null;
-    }
-
 import java.time.LocalDate;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -43,6 +37,4 @@ public class EntregadorRequest {
                 .foneFixo(foneFixo)
                 .build();
     }
-}
-
 }
