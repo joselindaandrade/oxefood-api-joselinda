@@ -8,22 +8,28 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+//import br.com.ifpe.oxefood.modelo.mensagens.EmailService;
+//import br.com.ifpe.oxefood.util.exceptions.//EntidadeNaoEncontradaException;
+
 @Service
 public class ClienteService {
-
-    @Transactional
-    public void delete(Long id) {
- 
-        Cliente cliente = repository.findById(id).get();
-        cliente.setHabilitado(Boolean.FALSE);
-        cliente.setVersao(cliente.getVersao() + 1);
- 
-        repository.save(cliente);
-    }
- 
-
     @Autowired
     private ClienteRepository repository;
+
+    public List<Cliente> filtrar(String nome, String cpf) {
+
+        List<Cliente> listaClientes = repository.findAll();
+
+        if ((nome != null && !"".equals(cpf)) &&
+                (cpf == null || "".equals(cpf))) {
+            listaClientes = repository.consultaPorNome(nome.trim());
+
+        } else if ((cpf != null && !"".equals(cpf)) &&
+                (nome == null || "".equals(nome))) {
+            listaClientes = repository.consultaPorCpf(cpf.trim());
+        }
+        return listaClientes;
+    }
 
     @Transactional
     public Cliente save(Cliente cliente) {
@@ -55,6 +61,16 @@ public class ClienteService {
         cliente.setFoneFixo(clienteAlterado.getFoneFixo());
 
         cliente.setVersao(cliente.getVersao() + 1);
+        repository.save(cliente);
+    }
+
+    @Transactional
+    public void delete(Long id) {
+
+        Cliente cliente = repository.findById(id).get();
+        cliente.setHabilitado(Boolean.FALSE);
+        cliente.setVersao(cliente.getVersao() + 1);
+
         repository.save(cliente);
     }
 

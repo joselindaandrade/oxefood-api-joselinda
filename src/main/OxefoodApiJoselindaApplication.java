@@ -9,5 +9,9 @@ public class OxefoodApiJoselindaApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(OxefoodApiJoselindaApplication.class, args);
 	}
+	@Bean
+    public BCryptPasswordEncoder bCryptPasswordEncoder() {
+	  return new BCryptPasswordEncoder();
+    }
 
 }

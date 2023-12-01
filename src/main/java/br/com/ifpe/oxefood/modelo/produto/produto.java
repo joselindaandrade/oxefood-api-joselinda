@@ -1,7 +1,10 @@
 package br.com.ifpe.oxefood.modelo.produto;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.Where;
@@ -23,6 +26,9 @@ import lombok.Setter;
 @NoArgsConstructor
 public class Produto extends EntidadeAuditavel  {
 
+    @ManyToOne
+   private CategoriaProduto categoria;
+
    
     @Column
    private String codigo;
@@ -41,5 +47,27 @@ public class Produto extends EntidadeAuditavel  {
 
     @Column
    private Integer tempoEntregaMaximo;
+
+    public Produto save(Produto produtoNovo) {
+        return null;
+    }
+
+    public Produto findById(Long id) {
+        return null;
+    }
+
+    public void update(Long id, Produto produto) {
+    }
+
+    public void delete(Long id) {
+    }
+
+    public List<Produto> filtrar(String codigo2, String titulo2, Long idCategoria) {
+        return null;
+    }
+
+    public List<Produto> findAll() {
+        return null;
+    }
 
 }
