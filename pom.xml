@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>br.com.ifpe</groupId>
-    <artifactId>oxefood-api-gabriel</artifactId>
+    <artifactId>oxefood-api-joselinda</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>oxefood-api-gabriel</name>
+    <name>oxefood-api-joselinda</name>
     <description>Projeto Web3</description>
     <properties>
         <java.version>17</java.version>
@@ -95,7 +95,7 @@
            <artifactId>springfox-swagger2</artifactId>
            <version>3.0.0</version>
         </dependency>
-        
+
         <dependency>
            <groupId>io.springfox</groupId>
            <artifactId>springfox-swagger-ui</artifactId>
