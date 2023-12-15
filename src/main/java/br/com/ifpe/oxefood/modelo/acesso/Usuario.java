@@ -26,6 +26,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+
 @Entity
 @Table(name = "Usuario")
 @Where(clause = "habilitado = true")
@@ -36,43 +37,43 @@ import lombok.Setter;
 @NoArgsConstructor
 public class Usuario extends EntidadeNegocio implements UserDetails {
 
-    private static final long serialVersionUID = -2660334839251150243L;
+   private static final long serialVersionUID = -2660334839251150243L;
 
-    public static final String ROLE_CLIENTE = "CLIENTE";
-    public static final String ROLE_EMPRESA = "EMPRESA";
-    public static final String ROLE_EMPRESA_USER = "EMPRESA_USER"; //READ, WRITE, UPDATE.
+   public static final String ROLE_CLIENTE = "CLIENTE"; //Realizar compras no sistema
+   public static final String ROLE_EMPRESA = "EMPRESA"; //READ, DELETE, WRITE, UPDATE.
+   public static final String ROLE_EMPRESA_USER = "EMPRESA_USER"; //READ, WRITE, UPDATE.
 
+   @Column(nullable = false, unique = true)
+   private String username;
 
-    @Column(nullable = false, unique = true)
-    private String username;
-    @JsonIgnore
-    @Column(nullable = false)
-    private String password;
+   @JsonIgnore
+   @Column(nullable = false)
+   private String password;
 
-    @JsonIgnore
-    @ElementCollection(fetch = FetchType.EAGER)
-    @Builder.Default
-    private List<String> roles = new ArrayList<>();
+   @JsonIgnore
+   @ElementCollection(fetch = FetchType.EAGER)
+   @Builder.Default
+   private List<String> roles = new ArrayList<>();
 
-    @JsonIgnore
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return this.roles.stream().map(SimpleGrantedAuthority::new).collect(toList());
-    }
+   @JsonIgnore
+   @Override
+   public Collection<? extends GrantedAuthority> getAuthorities() {
+       return this.roles.stream().map(SimpleGrantedAuthority::new).collect(toList());
+   }
 
-    public boolean isAccountNonExpired() {
-        return true;
-    }
+   public boolean isAccountNonExpired() {
+       return true;
+   }
 
-    public boolean isAccountNonLocked() {
-        return true;
-    }
+   public boolean isAccountNonLocked() {
+       return true;
+   }
 
-    public boolean isCredentialsNonExpired() {
-        return true;
-    }
+   public boolean isCredentialsNonExpired() {
+       return true;
+   }
 
-    public boolean isEnabled() {
-        return getHabilitado();
-    }
+   public boolean isEnabled() {
+       return getHabilitado();
+   }
 }

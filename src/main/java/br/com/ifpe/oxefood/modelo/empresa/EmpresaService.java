@@ -15,7 +15,7 @@ public class EmpresaService {
 
     @Transactional
     public Empresa save(Empresa empresa) {
-        
+
         empresa.setHabilitado(Boolean.TRUE);
         empresa.setVersao(1L);
         empresa.setDataCriacao(LocalDate.now());
@@ -25,7 +25,7 @@ public class EmpresaService {
     }
 
     public List<Empresa> findAll() {
-        
+
         return repository.findAll();
     }
 

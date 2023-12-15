@@ -25,7 +25,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Empresa extends EntidadeAuditavel {
-    
+
     //@ManyToOne
     //@JoinColumn(nullable = false)
     //private Usuario usuario;

@@ -1,8 +1,6 @@
 package br.com.ifpe.oxefood.modelo.cliente;
-
 import java.time.LocalDate;
 import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -22,7 +20,6 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
 @Entity
 @Table(name = "Cliente")
 @Where(clause = "habilitado = true")
@@ -41,22 +38,16 @@ public class Cliente extends EntidadeAuditavel {
     @Fetch(FetchMode.SUBSELECT)
     private List<EnderecoCliente> enderecos;
 
-    @Column
-    private String email;
-
     @Column(nullable = false, length = 100)
     private String nome;
-
     @Column
     private LocalDate dataNascimento;
 
-    @Column(name = "cpf", unique = true)
+    @Column(name = "cpf", unique=true)
     private String cpf;
 
-    @Column
+    @Column(length = 11)
     private String foneCelular;
-
-    @Column
+    @Column(length = 10)
     private String foneFixo;
-
 }

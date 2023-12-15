@@ -25,7 +25,7 @@ public class EmpresaController {
     public ResponseEntity<Empresa> save(@RequestBody @Valid EmpresaRequest request) {
 
 	Empresa empresa = request.buildEmpresa();
-	
+
 	/* if (request.getPerfil() != null && !"".equals(request.getPerfil())) {
 	    if (request.getPerfil().equals("Usuario")) {
 		empresa.getUsuario().getRoles().add(Usuario.ROLE_EMPRESA_USER);
@@ -33,7 +33,7 @@ public class EmpresaController {
 		empresa.getUsuario().getRoles().add(Usuario.ROLE_EMPRESA);
 	    }
 	} */
-	
+
 	Empresa empresaCriada = empresaService.save(empresa);
 	return new ResponseEntity<Empresa>(empresaCriada, HttpStatus.CREATED);
     }
